@@ -1,0 +1,184 @@
+
+// Dichiarazione variabili colori
+
+$green: #5cc871;
+$baseText: #222121;
+
+// Importazione font
+
+@font-face {
+    font-family: 'Roboto Light';
+    src: url(fonts/Roboto/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: 'Roboto Bold';
+    src: url(fonts/Roboto/Roboto-Bold.ttf);
+}
+
+// Creazione di funzioni per applicare la proprietà display: flex e per convertire le misure da px a rem
+
+@mixin applyFlex {
+    display: flex;
+}
+
+@mixin toRem($property, $valueInPx) {
+    #{$property}: ($valueInPx / 16) + rem;
+}
+
+// Creazione bottone
+
+@mixin myButton {
+    @include toRem(padding-top, 10);
+    @include toRem(padding-bottom, 10);
+    @include toRem(padding-left, 20);
+    @include toRem(padding-right, 20);
+    @include toRem(border-radius, 5);
+    @include toRem(font-size, 14);
+    background-color: $green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'Roboto Light';
+    &:hover { // Applicazione effetto hover
+        background-color: lighten($green, 10%);
+        transition: 0.2s;
+    }
+}
+
+// Applicazione del font iniziale e del colore del testo all'intera pagina web
+
+html, body {
+    margin: 0;
+    border: 0;
+    font-family: 'Roboto Light';
+    color: $baseText;
+}
+
+// Creazione barra di navigazione
+
+nav {
+    @include applyFlex();
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+nav h1 {
+    text-transform: uppercase;
+}
+
+nav ul {
+    @include applyFlex();
+    list-style-type: none;
+}
+
+nav ul li {
+    @include toRem(padding-left, 20);
+    @include toRem(padding-right, 20);
+    @include toRem(font-size, 14);
+    @include applyFlex();
+    align-items: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+// Icona hamburger menu da rendere visibile in ottica responsive
+
+.menu-toggle {
+    display: none;
+}
+
+// Creazione section
+
+.container {
+    @include applyFlex();
+    width: 80%;
+    margin: auto;
+    height: 80vh;
+    justify-content: center;
+}
+
+.row {
+    @include applyFlex();
+    flex-direction: row;
+    justify-content: center;
+}
+
+.column {
+    @include applyFlex();
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+}
+
+.column > * {
+    @include toRem(font-size, 50);
+    margin: 0;
+    font-family: 'Roboto Bold';
+}
+
+.column > h2 {
+    @include toRem(font-size, 24);
+    @include toRem(margin-top, 20);
+    @include toRem(margin-bottom, 20);
+}
+
+.green-text {
+    color: $green;
+}
+
+button, .column button {
+    @include myButton;
+    width: fit-content;
+}
+
+// Media query
+
+@media (max-width: 700px) {
+
+    // Gli elementi ul vengono resi invisibili e l'icona menu visibile
+
+    nav ul {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        @include toRem(width, 20);
+        @include toRem(height, 25);
+    }
+
+    // Adattamento della barra di navigazione per vista mobile
+
+    nav {
+        width: 90%;
+        margin: auto;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    // Adattamento dei container per vista mobile
+
+    .container, .row {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .column {
+        @include toRem(padding-top, 25);
+        @include toRem(padding-bottom, 25);
+        width: 100%;
+    }
+
+    .row {
+        width: 100%;
+        margin: auto;
+    }
+}

@@ -1,0 +1,137 @@
+@font-face {
+  font-family: "Roboto Light";
+  src: url(fonts/Roboto/Roboto-Light.ttf);
+}
+@font-face {
+  font-family: "Roboto Bold";
+  src: url(fonts/Roboto/Roboto-Bold.ttf);
+}
+html, body {
+  margin: 0;
+  border: 0;
+  font-family: "Roboto Light";
+  color: #222121;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+nav h1 {
+  text-transform: uppercase;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+}
+
+nav ul li {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  height: 80vh;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+}
+
+.column > * {
+  font-size: 3.125rem;
+  margin: 0;
+  font-family: "Roboto Bold";
+}
+
+.column > h2 {
+  font-size: 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.green-text {
+  color: #5cc871;
+}
+
+button, .column button {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  border-radius: 0.3125rem;
+  font-size: 0.875rem;
+  background-color: #5cc871;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Roboto Light";
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+button:hover, .column button:hover {
+  background-color: #82d592;
+  transition: 0.2s;
+}
+
+@media (max-width: 700px) {
+  nav ul {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+    width: 1.25rem;
+    height: 1.5625rem;
+  }
+  nav {
+    width: 90%;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .container, .row {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .container {
+    width: 90%;
+  }
+  .column {
+    padding-top: 1.5625rem;
+    padding-bottom: 1.5625rem;
+    width: 100%;
+  }
+  .row {
+    width: 100%;
+    margin: auto;
+  }
+}/*# sourceMappingURL=style.css.map */
